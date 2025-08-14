@@ -27,18 +27,27 @@
   /* clouds */
   .cloud,.footerCloud{padding:14px; display:flex; flex-wrap:wrap; gap:10px}
   .cloud{flex:0 0 auto}
-  .footerCloud{flex:1 1 auto; overflow:auto; font-size:14px}
+  .footerCloud{flex:1 1 auto; overflow:auto}
+
+  /* chips (形状崩れ対策) */
   .chip{
+    display:inline-flex;           /* iOSで高さが暴れないように */
+    align-items:center;            /* テキストを縦中央 */
+    white-space:nowrap;            /* 折り返さない */
+    word-break:keep-all;
+    -webkit-hyphens:none;
     background:var(--chip-bg); color:var(--chip-fg);
-    font-weight:600; font-size:14px; line-height:1;
-    padding:8px 10px; border-radius:999px;
+    font-weight:700; font-size:16px; line-height:1;
+    padding:10px 14px;
+    border-radius:9999px;          /* 完全なピル形状 */
+    box-shadow:0 1px 0 rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.06);
   }
 
   /* middle band */
   .band{
     background:var(--accent);
     padding:28px 18px;
-    flex:0 0 50svh; /* 黄色部分はそのまま半分程度 */
+    flex:0 0 50svh;               /* 黄色はそのまま */
     display:flex; flex-direction:column; justify-content:center;
   }
   .headline{
@@ -93,8 +102,8 @@
 <script>
 (() => {
   const STORAGE_KEY = "yabaTags_v1";
-  const seedTop = ["#悪いことは言わんからちょい辛にしとけ","#舌が麻痺","#鼻も麻痺","#体重計に期待","#大将とのギャップ"];
-  const seedBottom = ["#辛辣⚡️","#もはやバラエティ","#遊びじゃねえぞ","#🔥","#稲妻","#爆辛旨"];
+  const seedTop = ["#舌が麻痺","#鼻も麻痺","#大将とのギャップ","#ヤンババイ","#ばり無理"];
+  const seedBottom = ["#辛辣⚡️","#悪いことは言わんからちょい辛にしとけ","#遊びじゃねえぞ","#生卵必須","#爆辛旨","#もはやバラエティ","#稲妻"];
 
   const load = () => {
     try{
